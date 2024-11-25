@@ -71,6 +71,25 @@ h3 {
     position: relative;
     line-height: 1.5;
 }
+/*
+.hero-title {
+    opacity: 0;
+    animation: fadein 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+*/
+
 
 .nav-links a {
     float: left;
@@ -96,6 +115,26 @@ h3 {
     gap: 20px;
 }
 
+.nav-links a:hover {
+    color: #ffd700;
+    transition: color 0.3s ease, transform 0.3s ease;
+    transform: scale(1.1);
+}
+
+
+/*
+.nav-links {
+    position: relative;
+    transform: translateX(-100%);
+    animation: slideIn 1s ease-out forwards;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+    }
+}
+*/
 .nav-links a {
     color: #ffffff;
     text-decoration: none;
@@ -124,6 +163,51 @@ h3 {
 .welcome-banner p {
     margin: 0;
     font-family: 'Roboto', sans-serif;
+}
+/*
+.welcome-banner {
+    position: relative;
+    transform: translateX(-100%);
+    animation: slideIn 1s ease-out forwards;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+    }
+}
+*/
+
+.service-overview {
+    text-align: center;
+    background-color: #e3eaf1;
+    padding: auto;
+    margin-top: auto;
+}
+
+.service-overview h2 {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-bottom: auto;
+}
+
+.service-overview p {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.service-overview .btn-primary {
+    background-color: #0d6efd;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+.service-overview .btn-primary:hover {
+    background-color: #0056a3;
 }
 
 footer {
