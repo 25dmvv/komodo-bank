@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Contact Us</title>
 </head>
 
@@ -19,6 +20,7 @@
             <nav aria-label="Main Navigation Bar">
                 <ul class="nav-links">
                     <b>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="mortgage.html">Mortgage Calculator</a></li>
                         <li><a href="about-us.html">About Us</a></li>
                         <li><a href="contact-us.html">Contact Us</a></li>
@@ -30,27 +32,31 @@
         </div>
     </header>
 
-
     <section class="contact-section">
+        <h2 class="form-header">Get in touch with us!</h2>
         <div class="contact-form">
             <form action="">
                 <div class="row">
                     <div class="column">
-                        <input type="text" placeholder="Full name:" name="name" required
+                        <label for="fullname">Full Name:</label>
+                        <input type="text" placeholder="Full name:" name="fullname" required
                             oninvalid="this.setCustomValidity('Please enter your name.')"
                             oninput="this.setCustomValidity('')">
                     </div>
                     <div class="column-half">
+                        <label for="email">Email:<Address></Address></label>
                         <input type="email" placeholder="Email Address:" name="email" required
                             oninvalid="this.setCustomValidity('Please enter your Email Address.')"
                             oninput="this.setCustomValidity('')">
                     </div>
                     <div class="column-half">
+                        <label for="phone">Phone Number:</label>
                         <input type="tel" placeholder="Phone No.:" name="phone" required
                             oninvalid="this.setCustomValidity('Please enter your Phone number.')"
                             oninput="this.setCustomValidity('')">
                     </div>
                     <div class="column">
+                        <label for="message">Message:</label>
                         <textarea placeholder="Message:" name="message" required
                             oninvalid="this.setCustomValidity('Please enter your Message.')"
                             oninput="this.setCustomValidity('')"></textarea>
@@ -64,8 +70,59 @@
         </div>
     </section>
 
+    <script>
+        $(document).ready(function () {
+            $(".contact-form").hide().fadeIn(1000);
+
+            $(".contact-form").validate({
+                rules: {
+                    fullname: {
+                        required: true,
+                        minlength: 2
+                    },
+
+                    email: {
+                        required: true,
+                        email: true
+                    },
+
+                    phone: {
+                        required: true,
+                        pattern: /^[0-9]{11}$/
+                    },
+
+                    message: {
+                        required: true,
+                        maxlength: 500
+                    }
+                },
+
+                messages: {
+                    fullname: {
+                        required: "Please enter your full name.",
+                        minlength: "Must be at least 2 characters in length."
+                    },
+
+                    email: {
+                        required: "Please enter your email address.",
+                        email: "Must be a valid email address."
+                    },
+
+                    phone: {
+                        required: "Please enter your phone number.",
+                        pattern: "Must be 11 characters in length."
+                    },
+
+                    message: {
+                        required: "Please enter a message.",
+                        maxlength: "Cannot exceed 500 characters."
+                    }
+                }
+            });
+        });
+    </script>
+
     <section class="service-overview">
-        <h2><b><a href="services.html" class="cta-button">Our Services</a></b></h2>
         <p>At Komodo Bank, we offer secure transactions, individualised banking solutions, and expert financial
             guidance
             according to your needs.</p>
