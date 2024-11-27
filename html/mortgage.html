@@ -18,24 +18,120 @@
         <div class="nav-bar">
             <nav aria-label="Main Navigation Bar">
                 <ul class="nav-links">
-                    <b>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="mortgage.html">Mortgage Calculator</a> </li>
-                        <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="contact-us.html">Contact Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="faq.html">FAQs</a></li>
-                        </li>
-                    </b>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mortgage.html">Mortgage Calculator</a> </li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
                 </ul>
             </nav>
         </div>
+
+        <!--Mortgage Calculator-->
+        <section class="mortgage-calc-section">
+            <h2 class="calc-header">Mortgage Calculator</h2>
+            <form id="mortgage-calc-form">
+                <label for="loan-amount">Loan Amount (in £):</label>
+                <input type="number" id="loan-amount" name="loan-amount" placeholder="Enter loan amount" required>
+
+                <label for="interest-rate">Monthly Income (in £):</label>
+                <input type="number" id="monthly-income" name="monthly-income" placeholder="Enter your monthly income"
+                    required>
+
+                <label for="loan-term">Loan Term (Years):</label>
+                <input type="number" id="loan-term" name="loan-term" placeholder="Enter loan term (Years)" required>
+
+                <button type="button" id="calculate-btn">Calculate</button>
+                <button type="reset" id="reset-btn">Reset</button>
+            </form>
+
+            <div id="results">
+                <h3><b>Results<b /></h3>
+                <p id="eligibilty-message"></p>
+                <p>Monthly Payment: <span id="monthly-payment">£--</span></p>
+                <p>Total Interest Paid: <span id="total-interest">£--</span></p>
+                <p>Total Repayment Amount: <span id="total-repayment">£--</span></p>
+                <p>Remaining Monthly Income: <span id="remaining-income">£--</span></p>
+            </div>
+        </section>
 
         <section class="service-overview">
             <p>At Komodo Bank, we offer secure transactions, individualised banking solutions, and expert financial
                 guidance
                 according to your needs.</p>
         </section>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const form = document.getElementById("mortgage-calc-form");
+                const results = document.getElementById("results");
+                const calcBtn = document.getElementById("calculate-btn");
+                const resetBtn = document.getElementById("reset-btn");
+                const monthlyPaymentEl = document.getElementById("monthly-payment");
+                const totalInterestEl = document.getElementById("total-interest");
+                const totalRepaymentEl = document.getElementById("total-repayment");
+                const eligibilityMessage = document.createElement("p");
+                const remainingIncomeEl = document.createElement("p");
+
+                results.appendChild(eligibilityMessage);
+                results.appendChild(remainingIncomeEl);
+
+                calcBtn.addEventListener("click", function () {
+
+                    const loanAmount = parseFloat(document.getElementById("loan-amount").value);
+                    const interestRate = 4.5;
+                    const loanTerm = parseInt(document.getElementById("loan-term").value);
+                    const monthlyIncome = parseFloat(document.getElementById("monthly-income").value);
+
+                    if (isNaN(loanAmount) || isNaN(loanTerm) || isNaN(monthlyIncome)) {
+                        alert("Please enter valid numbers for all fields.");
+                        return;
+                    }
+
+                    const monthlyInterestRate = (interestRate / 100) / 12;
+                    const totalPayments = loanTerm * 12;
+
+                    const monthlyPayment = (loanAmount * monthlyInterestRate) /
+                        (1 - Math.pow(1 + monthlyInterestRate, -totalPayments));
+
+                    const totalRepayment = monthlyPayment * totalPayments;
+                    const totalInterest = totalRepayment - loanAmount;
+
+                    const incomeThreshold = 0.3 * monthlyIncome;
+                    if (monthlyPayment > incomeThreshold) {
+                        eligibilityMessage.textContent = "It is highly likely that your loan would be denied, due to your monthly payment exceeding 30% of your income.";
+                        eligibilityMessage.style.color = "red";
+
+                        monthlyPaymentEl.textContent = "£--";
+                        totalInterestEl.textContent = "£--";
+                        totalRepaymentEl.textContent = "£--";
+                        remainingIncomeEl.textContent = "";
+                    } else {
+                        eligibilityMessage.textContent = "It has highly likely that your loan would be approved, due to you meeting the minimun income requirements.";
+                        eligibilityMessage.style.color = "green";
+
+                        monthlyPaymentEl.textContent = `£${monthlyPayment.toFixed(2)}`;
+                        totalInterestEl.textContent = `£${totalInterest.toFixed(2)}`;
+                        totalRepaymentEl.textContent = `£${totalRepayment.toFixed(2)}`;
+                        remainingIncomeEl.textContent = `Remaining Income after payment: £${(monthlyIncome - monthlyPayment).toFixed(2)}`;
+                        remainingIncomeEl.style.color = "blue";
+                    }
+
+                    results.style.display = "block";
+                });
+
+                resetBtn.addEventListener("click", function () {
+                    form.reset();
+                    results.style.display = "none";
+                    eligibilityMessage.textContent = "";
+                    remainingIncomeEl.textContent = "";
+                });
+            });
+
+
+        </script>
+
 
         <!--Footer-->
         <footer>
