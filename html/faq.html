@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>FAQs</title>
 </head>
 
@@ -24,10 +27,120 @@
                     <li><a href="contact-us.html">Contact Us</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="faq.html">FAQs</a></li>
-                    </li>
                 </ul>
             </nav>
         </div>
+    </header>
+
+    <div class="faq-wrapper">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq">
+            <button class="accordion">
+                What is Komodo Bank?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="panel">
+                <p>Komodo Bank is a contemporary financial services company focused on providing individuals with secure
+                    and innovative banking services designed to address their personal and business requirements.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                What type of accounts do Komodo Bank offer?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="panel">
+                <p>We provide a range of financial services, including personal savings accounts, checking accounts,
+                    fixed deposits, and business banking solutions to meet your diverse financial requirements.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                What is the purpose of our Mortgage Calculator?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="panel">
+                <p>Our Mortgage Calculator is created to assist you in estimating your possible monthly mortgage
+                    payments by taking into account factors like loan amount, interest rate, and term duration. This
+                    tool is valuable for effectively managing your finances while contemplating a mortgage.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                How do I use the Mortgage Calculator?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="panel">
+                <p>To begin, input the loan amount you wish to borrow, select the applicable interest rate, and
+                    determine the loan duration. The calculator will generate an estimate of your monthly payments,
+                    allowing you to grasp the financial obligation associated with the loan.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                What services does Komodo Bank offer?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="panel">
+                <p>Komodo Bank offers a variety of services such as personal and business banking, investment
+                    opportunities, mortgage assistance, and financial planning. Our focus is on delivering secure
+                    transactions and customized banking solutions designed to meet your specific requirements.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                How can I contact Komodo Bank for more information?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="panel">
+                <p>You can get in touch with us via the 'Contact Us' section on our website, which includes our phone
+                    number, email address, and a contact form. Our customer service team is available to help you with
+                    any questions you may have.</p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                Where can I learn more about Komodo Bank's mission and values?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="panel">
+                <p>Explore our 'About Us' section to discover our mission, core values, and dedication to delivering
+                    outstanding banking services to our clients.</p>
+            </div>
+        </div>
+
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    this.parentElement.classList.toggle("active");
+
+                    var panel = this.nextElementSibling;
+
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                });
+            }
+        </script>
+
+        <section class="service-overview">
+            <p>At Komodo Bank, we offer secure transactions, individualised banking solutions, and expert financial
+                guidance
+                according to your needs.</p>
+        </section>
 
         <!--Footer-->
         <footer>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Services</title>
 </head>
 
@@ -24,10 +25,60 @@
                     <li><a href="contact-us.html">Contact Us</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="faq.html">FAQs</a></li>
-                    </li>
                 </ul>
             </nav>
         </div>
+
+        <section class="services-section">
+            <h2 class="services-header">Our Services</h2>
+
+            <article class="service-card">
+                <h3>Personal Banking</h3>
+                <p>We provide safe online services, individualised banking solutions with customised accounts, and an
+                    emphasis on achieving your financial objectives.
+                </p>
+            </article>
+
+            <article class="service-card">
+                <h3>Business Banking</h3>
+                <p>With our flexible accounts, loans, and business solutions, you can confidently manage your company's
+                    money.
+                </p>
+            </article>
+
+            <article class="service-card">
+                <h3>Investment Options</h3>
+                <p>With our extensive selection of investing services, which include expertly managed portfolios, you
+                    may increase your wealth.
+                </p>
+            </article>
+
+            <article class="service-card">
+                <h3>Mortgage Support</h3>
+                <p>With our affordable mortgage plans, adjustable payment schedules, and knowledgeable guidance, you can
+                    turn your dream house into a reality.
+                </p>
+            </article>
+        </section>
+
+        <script>
+            $(document).ready(function () {
+
+                $(".service-item").hide().each(function (index) {
+                    $(this).delay(200 * index).fadeIn(800);
+                });
+
+                $(".service-title").on("click", function () {
+                    $(this).next(".service-description").slideToggle(400);
+                });
+            });
+        </script>
+
+        <section class="service-overview">
+            <p>At Komodo Bank, we offer secure transactions, individualised banking solutions, and expert financial
+                guidance
+                according to your needs.</p>
+        </section>
 
         <!--Footer-->
         <footer>
