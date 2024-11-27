@@ -146,6 +146,32 @@ h3 {
     color: #f1f1f1;
 }
 
+.about-us-section {
+    padding: 50px 20px;
+    background-color: #f5f8fa;
+    text-align: center;
+}
+
+.about-us-section article {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #e3f2fd;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-section h2,
+.about-us-section h3 {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.about-us-section p {
+    font-size: 1.2rem;
+}
+
 .cta-button1,
 .cta-button2 {
     display: inline-block;
